@@ -1,11 +1,9 @@
 <template>
-    <section class="port-list-container">
-        <ul class="port-list">
-            <li v-for="currPort in ports" :key="currPort">
-                <PortPreview :currPort="currPort" />
-            </li>
-        </ul>
-    </section>
+    <ul class="port-list">
+        <li v-for="currPort in ports" :key="currPort">
+            <PortPreview :currPort="currPort" />
+        </li>
+    </ul>
 </template>
 
 <script>
@@ -15,6 +13,9 @@ export default {
     name: 'PortList',
     props: {
         ports: { type: Array, required: true }
+    },
+    created() {
+        console.log(this.ports)
     },
     components: {
         PortPreview

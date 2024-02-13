@@ -1,11 +1,9 @@
 <template>
-    <section class="switch-list-container">
-        <ul class="switch-list">
-            <li v-for="currSwitch in switches" :key="currSwitch.switch_id">
-                <SwitchPreview :currSwitch="currSwitch" />
-            </li>
-        </ul>
-    </section>
+    <ul class="switch-list">
+        <li v-for="currSwitch in switches" :key="currSwitch.switch_id">
+            <SwitchPreview :currSwitch="currSwitch" />
+        </li>
+    </ul>
 </template>
 
 <script>
