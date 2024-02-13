@@ -14,13 +14,10 @@ async function getById(switchId) {
 }
 
 async function getSwitchesForHome() {
-    // return await httpService.get(`${BASE_URL}/home`)
-    return switchesJson
+    return await httpService.get(`${BASE_URL}`)
 }
 
 async function getSearchRes(query) {
     if (!query) return []
     return await httpService.get(`${BASE_URL}/search/${query}`)
 }
-
-window.cs = switchService 
