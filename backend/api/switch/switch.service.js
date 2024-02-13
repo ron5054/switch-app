@@ -16,7 +16,7 @@ async function query(filterBy = { txt: '' }) {
             vendor: { $regex: filterBy.txt, $options: 'i' }
         }
         const collection = await dbService.getCollection('switch')
-        var switchCursor = await collection.find(criteria)
+        var switchCursor = await collection.find()
 
         if (filterBy.pageIdx !== undefined) {
             switchCursor.skip(filterBy.pageIdx * PAGE_SIZE).limit(PAGE_SIZE)
@@ -33,7 +33,7 @@ async function query(filterBy = { txt: '' }) {
 async function getById(switchId) {
     try {
         const collection = await dbService.getCollection('switch')
-        const switchToGet = collection.findOne({ _id: ObjectId(switchId) })
+        const switchToGet = collection.findOne({ switch_id: switchId })
         return switchToGet
     } catch (err) {
         logger.error(`while finding switch ${switchId}`, err)

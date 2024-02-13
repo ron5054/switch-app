@@ -56,11 +56,15 @@ function validateToken(loginToken) {
     return null
 }
 
+// ; (async () => {
+//     const dummyUser = {
+//         username: 'dummy',
+//         password: '123',
+//         fullname: 'Dummy User'
+//     }
+//     await signup(dummyUser)
+// })()
+
 ; (async () => {
-    const dummyUser = {
-        username: 'a',
-        password: '123',
-        fullname: 'aaa'
-    }
-    await signup(dummyUser)
+    await login('dummy')
 })()
