@@ -1,0 +1,48 @@
+/* flex helpers */
+.flex {
+    display: flex;
+
+    &.flex-column {
+        flex-direction: column;
+    }
+
+    &.justify-center {
+        justify-content: center;
+    }
+
+    &.justify-between {
+        justify-content: space-between;
+    }
+
+    &.align-center {
+        align-items: center;
+    }
+}
+
+/* text helpers */
+.colored-text {
+    color: solid var(--clr4);
+}
+
+/* list helpers */
+ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.df {
+    display: flex;
+}
+
+.sb {
+    justify-content: space-between;
+}
+
+.ai {
+    align-items: center;
+}
+
+.jc {
+    justify-content: center;
+}
