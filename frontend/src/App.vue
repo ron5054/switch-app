@@ -6,8 +6,14 @@
 export default {
     name: 'App',
 
-    created() {
-        this.$store.dispatch({ type: 'getswitchesForHome' })
+    async created() {
+        try {
+            const userCred = { username: 'dummy', password: '123' }
+            await this.$store.dispatch({ type: 'login', userCred })
+            await this.$store.dispatch({ type: 'getSwitchesForHome' })
+        } catch (err) {
+            console.log('Something went wrong at app creation')
+        }
     }
 }
 </script>
