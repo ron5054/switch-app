@@ -22,13 +22,13 @@ export const switchStore = {
         }
     },
     actions: {
-        async getswitchesForHome({ commit }) {
+        async getSwitchesForHome({ commit }) {
             commit('setLoading', true)
             try {
                 const switches = await switchService.getSwitchesForHome()
                 commit({ type: 'setSwitchesForHome', switches })
             } catch (err) {
-                console.log('SwitchStore: Error in getswitchesForHome', err.message)
+                console.log('SwitchStore: Error in getSwitchesForHome', err.message)
                 throw new Error('Could not load switches for home page')
             }
             finally {
@@ -38,7 +38,7 @@ export const switchStore = {
 
         async getSwitch({ }, { switchId }) {
             try {
-                const currSwitch = await switcheService.getById(switchId)
+                const currSwitch = await switchService.getById(switchId)
                 return currSwitch
             } catch (err) {
                 console.log(err.message)
@@ -51,7 +51,7 @@ export const switchStore = {
                 return
             }
             try {
-                const res = await switcheService.getSearchRes(query)
+                const res = await switchService.getSearchRes(query)
                 commit({ type: 'setSearchRes', res: res })
             } catch (err) {
                 console.log(err.message)

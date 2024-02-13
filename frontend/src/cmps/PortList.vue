@@ -15,7 +15,7 @@ export default {
         ports: { type: Array, required: true }
     },
     created() {
-        console.log(this.ports)
+        // console.log(this.ports)
     },
     components: {
         PortPreview

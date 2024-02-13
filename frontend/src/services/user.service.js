@@ -8,12 +8,9 @@ export const userService = {
     getLoggedinUser,
 }
 
-window.userService = userService
-
 async function login(userCred) {
     const user = await httpService.post('auth/login', userCred)
     if (user) {
-        socketService.login(user._id)
         return saveLocalUser(user)
     }
 }
