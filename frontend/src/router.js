@@ -23,7 +23,7 @@ const routes = [
     component: SwitchDetails
   },
   {
-    path: '/switch/search/:switchId?',
+    path: '/switch/search/:term?',
     name: 'SwitchSearch',
     component: SwitchSearch
   }

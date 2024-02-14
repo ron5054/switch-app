@@ -25,7 +25,7 @@ export const switchStore = {
         async getSwitchesForHome({ commit }) {
             commit('setLoading', true)
             try {
-                const switches = await switchService.getSwitchesForHome()
+                const switches = await switchService.getSwitches()
                 commit({ type: 'setSwitchesForHome', switches })
             } catch (err) {
                 console.log('SwitchStore: Error in getSwitchesForHome', err.message)
@@ -45,17 +45,17 @@ export const switchStore = {
                 throw new Error('Could not get switch')
             }
         },
-        async getSearchRes({ commit }, { query }) {
-            if (!query) {
+        async getSearchRes({ commit }, { term }) {
+            if (!term) {
                 commit({ type: 'setSearchRes', res: [] })
                 return
             }
             try {
-                const res = await switchService.getSearchRes(query)
-                commit({ type: 'setSearchRes', res: res })
+                const res = await switchService.getSwitches({ term })
+                commit({ type: 'setSearchRes', res })
             } catch (err) {
                 console.log(err.message)
-                throw new Error('Could not get tracks')
+                throw new Error('Could not search result')
             }
         },
     }

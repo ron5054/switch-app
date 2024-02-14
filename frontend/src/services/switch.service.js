@@ -4,20 +4,14 @@ import { httpService } from './http.service.js'
 const BASE_URL = 'switch/'
 
 export const switchService = {
+    getSwitches,
     getById,
-    getSearchRes,
-    getSwitchesForHome,
+}
+
+async function getSwitches(filterBy = {}) {
+    return await httpService.get(`${BASE_URL}`, filterBy)
 }
 
 async function getById(switchId) {
     return await httpService.get(`${BASE_URL}${switchId}`)
-}
-
-async function getSwitchesForHome() {
-    return await httpService.get(`${BASE_URL}`)
-}
-
-async function getSearchRes(query) {
-    if (!query) return []
-    return await httpService.get(`${BASE_URL}/search/${query}`)
 }

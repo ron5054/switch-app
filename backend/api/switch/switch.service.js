@@ -10,13 +10,18 @@ export const switchService = {
     getById,
 }
 
-async function query(filterBy = { txt: '' }) {
+async function query(filterBy = { term: '' }) {
     try {
+        const regexOptions = { $regex: filterBy.term, $options: 'i' }
         const criteria = {
-            vendor: { $regex: filterBy.txt, $options: 'i' }
+            $or: [
+                { switch_id: regexOptions },
+                { "ports.host.hostName": regexOptions },
+                { "ports.host.ip_address": regexOptions },
+            ]
         }
         const collection = await dbService.getCollection('switch')
-        var switchCursor = await collection.find()
+        var switchCursor = await collection.find(criteria)
 
         if (filterBy.pageIdx !== undefined) {
             switchCursor.skip(filterBy.pageIdx * PAGE_SIZE).limit(PAGE_SIZE)
