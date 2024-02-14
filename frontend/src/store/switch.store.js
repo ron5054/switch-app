@@ -3,11 +3,11 @@ import { switchService } from '../services/switch.service'
 export const switchStore = {
     state: {
         isLoading: false,
-        switchesForHome: [],
+        switches: [],
         searchRes: [],
     },
     getters: {
-        switchesForHome({ switchesForHome }) { return switchesForHome },
+        switches({ switches }) { return switches },
         searchRes({ searchRes }) { return searchRes },
         isLoading( { isLoading }) { return isLoading }
     },
@@ -18,18 +18,18 @@ export const switchStore = {
         setSearchRes(state, { res }) {
             state.searchRes = res
         },
-        setSwitchesForHome(state, { switches }) {
-            state.switchesForHome = switches
+        setSwitches(state, { switches }) {
+            state.switches = switches
         }
     },
     actions: {
-        async getSwitchesForHome({ commit }) {
+        async getSwitches({ commit }, { pageIdx, pageSize }) {
             commit('setIsLoading', true)
             try {
-                const switches = await switchService.getSwitches()
-                commit({ type: 'setSwitchesForHome', switches })
+                const switches = await switchService.getSwitches({ pageIdx, pageSize })
+                commit({ type: 'setSwitches', switches })
             } catch (err) {
-                console.log('SwitchStore: Error in getSwitchesForHome', err.message)
+                console.log('SwitchStore: Error in getSwitches', err.message)
                 throw new Error('Could not load switches for home page')
             } finally {
                 commit('setIsLoading', false)

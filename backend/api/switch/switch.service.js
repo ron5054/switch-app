@@ -3,7 +3,6 @@ import { logger } from '../../services/logger.service.js'
 import mongodb from 'mongodb'
 
 const { ObjectId } = mongodb
-const PAGE_SIZE = 20
 
 export const switchService = {
     query,
@@ -24,7 +23,7 @@ async function query(filterBy = { term: '' }) {
         var switchCursor = await collection.find(criteria)
 
         if (filterBy.pageIdx !== undefined) {
-            switchCursor.skip(filterBy.pageIdx * PAGE_SIZE).limit(PAGE_SIZE)
+            switchCursor.skip(filterBy.pageIdx * +filterBy.pageSize).limit(+filterBy.pageSize)
         }
 
         const switches = switchCursor.toArray()

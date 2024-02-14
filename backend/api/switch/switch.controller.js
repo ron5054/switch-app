@@ -6,7 +6,8 @@ export async function getSwitches(req, res) {
     logger.debug('Getting Switches:', req.query)
     const filterBy = {
       term: req.query.term || '',
-      pageIdx: req.query.pageIdx || 0
+      pageIdx: req.query.pageIdx || 0,
+      pageSize: req.query.pageSize || 8,
     }
     const switches = await switchService.query(filterBy)
     res.json(switches)

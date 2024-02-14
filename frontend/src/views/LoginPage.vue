@@ -34,7 +34,7 @@ export default {
 
       try {
         await this.$store.dispatch({ type: 'login', userCred: this.loginCred })
-        await this.$store.dispatch({ type: 'getSwitchesForHome' })
+        await this.$store.dispatch({ type: 'getSwitches', pageIdx: 0, pageSize: 8 })
         this.$router.push('/')
       } catch (err) {
         console.log(err.message)

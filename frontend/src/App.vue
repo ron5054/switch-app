@@ -18,7 +18,7 @@ export default {
                 return
             }
 
-            await this.$store.dispatch({ type: 'getSwitchesForHome' })
+            await this.$store.dispatch({ type: 'getSwitches', pageIdx: 0, pageSize: 8 })
         } catch (err) {
             console.log('Something went wrong at app creation')
         }

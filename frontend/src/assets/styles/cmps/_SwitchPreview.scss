@@ -1,3 +1,8 @@
 .switch-preview {
     text-align: center;
+    transition: 0.2s color;
+
+    &:hover {
+        color: blue;
+    }
 }
