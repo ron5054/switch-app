@@ -1,5 +1,5 @@
 import { httpService } from './http.service.js'
-import switchesJson from '../data/data.json' assert {type: 'json'}
+// import switchesJson from '../data/data.json' assert {type: 'json'}
 
 const BASE_URL = 'switch/'
 

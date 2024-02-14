@@ -1,6 +1,5 @@
 <template>
     <section v-if="currSwitch" class="switch-details">
-        <h1>SwitchDetails</h1>
         <h1>{{ currSwitch.switch_id }}</h1>
         <PortList :ports="currSwitch.ports" />
     </section>
@@ -29,8 +28,7 @@ export default {
 
     methods: {
         async loadSwitch() {
-            const currSwitch = await this.$store.dispatch({ type: 'getSwitch', switchId: this.switchId })
-            this.currSwitch = currSwitch
+            this.currSwitch = await this.$store.dispatch({ type: 'getSwitch', switchId: this.switchId })
         }
     },
     watch: {
