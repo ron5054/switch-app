@@ -1,23 +1,30 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Login from './views/Login.vue'
+
+import LoginPage from './views/LoginPage.vue'
 import SwitchIndex from './views/SwitchIndex.vue'
 import SwitchDetails from './views/SwitchDetails.vue'
+import SwitchSearch from './views/SwitchSearch.vue'
 
 const routes = [
-  {
-    path: '/Login',
-    name: 'Login',
-    component: Login,
-  },
   {
     path: '/',
     name: 'SwitchIndex',
     component: SwitchIndex
   },
   {
+    path: '/login',
+    name: 'Login',
+    component: LoginPage,
+  },
+  {
     path: '/switch/:switchId',
     name: 'SwitchDetails',
     component: SwitchDetails
+  },
+  {
+    path: '/switch/search/:switchId?',
+    name: 'SwitchSearch',
+    component: SwitchSearch
   }
 ]
 
