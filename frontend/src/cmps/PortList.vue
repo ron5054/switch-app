@@ -1,5 +1,5 @@
 <template>
-    <ul class="port-list">
+    <ul class="port-list" :style="{ maxWidth: maxWidth }">
         <li v-for="currPort in ports" :key="currPort">
             <PortPreview :currPort="currPort" />
         </li>
@@ -14,8 +14,10 @@ export default {
     props: {
         ports: { type: Array, required: true }
     },
-    created() {
-        // console.log(this.ports)
+    computed: {
+        maxWidth() {
+            return this.$route.path === '/' ? '24rem' : 'unset'
+        }
     },
     components: {
         PortPreview
