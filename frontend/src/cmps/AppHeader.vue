@@ -6,7 +6,9 @@
                 <ul class="main-nav flex">
                     <li><RouterLink to="/">Resources</RouterLink></li>
                     <li><RouterLink to="/switch/search">Search</RouterLink></li>
-                    <li><RouterLink to="/login">Login</RouterLink></li>
+                    <li><RouterLink to="/login" 
+                        @click="onLogout"
+                        class="nav-group">{{ msg }}</RouterLink></li>
                 </ul>
             </nav>
         </div>
@@ -16,5 +18,20 @@
 <script>
 export default {
     name: 'AppHeader',
+
+    props: { user: Object },
+
+    data() {
+        return {
+            msg: this.user ? `Welcome, ${this.user.fullname}` : 'Login'
+        }
+    },
+
+    methods: {
+        onLogout() {
+            if(this.user) return
+            this.$emit('logout')
+        }
+    }
 }
 </script>
