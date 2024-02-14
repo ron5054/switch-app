@@ -1,12 +1,15 @@
 <template>
     <section v-if="currSwitch" class="switch-details">
         <h1 class="title">{{ currSwitch.switch_id }}</h1>
+        <Loader />
         <PortList :ports="currSwitch.ports" />
     </section>
+
 </template>
 
 <script>
 import PortList from '../cmps/PortList.vue'
+import Loader from '../cmps/Loader.vue'
 export default {
     name: 'SwitchDetails',
 
@@ -28,7 +31,11 @@ export default {
 
     methods: {
         async loadSwitch() {
-            this.currSwitch = await this.$store.dispatch({ type: 'getSwitch', switchId: this.switchId })
+            try {
+                this.currSwitch = await this.$store.dispatch({ type: 'getSwitch', switchId: this.switchId })
+            } catch (err) {
+                console.log('Could not get switch', err);
+            }
         }
     },
     watch: {
@@ -38,7 +45,8 @@ export default {
     },
 
     components: {
-        PortList
+        PortList,
+        Loader
     }
 
 }

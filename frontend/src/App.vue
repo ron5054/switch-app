@@ -13,14 +13,6 @@ export default {
 
     async created() {
         try {
-            // const userCred = { username: 'dummy', password: '123' }
-            // const user = await this.$store.dispatch({ type: 'login', userCred })
-
-            // if (!user) {
-            //     this.goToLogin()
-            //     return
-            // }
-
             if (!this.user) {
                 this.goToLogin()
                 return

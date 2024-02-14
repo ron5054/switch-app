@@ -10,12 +10,16 @@
 
 // COMPONENTS
 @import 'cmps/AppHeader';
+@import 'cmps/Loader';
 
 @import 'cmps/PortList';
 @import 'cmps/PortPreview';
 
+@import 'cmps/LoginPage';
+@import 'cmps/SwitchIndex';
 @import 'cmps/SwitchDetails';
 @import 'cmps/SwitchSearch';
+
 @import 'cmps/SwitchList';
 @import 'cmps/SwitchPreview';
 @import 'cmps/SwitchSearchList';

@@ -42,7 +42,7 @@ export default {
     },
 
     components: {
-        SwitchSearchList
+        SwitchSearchList,
     }
 }
 </script>

@@ -9,9 +9,10 @@ export const switchStore = {
     getters: {
         switchesForHome({ switchesForHome }) { return switchesForHome },
         searchRes({ searchRes }) { return searchRes },
+        isLoading( { isLoading }) { return isLoading }
     },
     mutations: {
-        setLoading(state, value) {
+        setIsLoading(state, value) {
             state.isLoading = value
         },
         setSearchRes(state, { res }) {
@@ -23,26 +24,28 @@ export const switchStore = {
     },
     actions: {
         async getSwitchesForHome({ commit }) {
-            commit('setLoading', true)
+            commit('setIsLoading', true)
             try {
                 const switches = await switchService.getSwitches()
                 commit({ type: 'setSwitchesForHome', switches })
             } catch (err) {
                 console.log('SwitchStore: Error in getSwitchesForHome', err.message)
                 throw new Error('Could not load switches for home page')
-            }
-            finally {
-                commit('setLoading', false)
+            } finally {
+                commit('setIsLoading', false)
             }
         },
 
-        async getSwitch({ }, { switchId }) {
+        async getSwitch({ commit }, { switchId }) {
+            commit('setIsLoading', true)
             try {
                 const currSwitch = await switchService.getById(switchId)
                 return currSwitch
             } catch (err) {
                 console.log(err.message)
                 throw new Error('Could not get switch')
+            } finally {
+                commit('setIsLoading', false)
             }
         },
         async getSearchRes({ commit }, { term }) {
@@ -51,11 +54,14 @@ export const switchStore = {
                 return
             }
             try {
+                commit('setIsLoading', true)
                 const res = await switchService.getSwitches({ term })
                 commit({ type: 'setSearchRes', res })
             } catch (err) {
                 console.log(err.message)
                 throw new Error('Could not search result')
+            } finally {
+                commit('setIsLoading', false)
             }
         },
     }

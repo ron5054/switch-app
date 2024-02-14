@@ -1,8 +1,16 @@
 .switch-search-preview {
     display: grid;
     justify-items: center;
+    padding: 2px;
+    border-radius: 5px;
+    cursor: pointer;
 
     img{
         width: 100%;
+    }
+
+    &:hover {
+        color: blue;
+        box-shadow: inset 0px 0px 5px white;
     }
 }

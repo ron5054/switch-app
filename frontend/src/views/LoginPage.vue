@@ -1,19 +1,21 @@
 <template>
-  <div class="login-view">
-    <section class="login-form">
-      <form @submit.prevent="doLogin">
-        <span>Username</span>
-        <input type="text" v-model="loginCred.username" placeholder="User name">
-        <span>Password</span>
-        <input type="password" v-model="loginCred.password" placeholder="Password">
-        <button class="login-btn">Log In</button>
-      </form>
-    </section>
-  </div>
+  <form @submit.prevent="doLogin" class="login-page">
+    <h1>Login</h1>
+    <label class="flex justify-between">
+      Username
+      <input type="text" v-model="loginCred.username" placeholder="User name">
+    </label>
+    <label class="flex justify-between">
+      Password
+      <input type="password" v-model="loginCred.password" placeholder="Password">
+    </label>
+    <button v-if="!isLoading" class="btn-login">Log In</button>
+    <Loader />
+  </form>
 </template>
 
 <script>
-
+import Loader from '../cmps/Loader.vue'
 export default {
   name: 'LoginPage',
 
@@ -39,6 +41,16 @@ export default {
         alert('Wrong username or password')
       }
     },
+  },
+
+  computed: {
+    isLoading() {
+      return this.$store.getters.isLoading
+    }
+  },
+
+  components: {
+    Loader
   }
 }
 </script>

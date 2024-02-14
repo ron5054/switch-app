@@ -1,5 +1,6 @@
 <template>
     <ul class="switch-search-list">
+        <Loader />
         <li v-for="currSwitch in switches" :key="currSwitch.switch_id">
             <SwitchSearchPreview :currSwitch="currSwitch" />
         </li>
@@ -8,6 +9,7 @@
 
 <script>
 import SwitchSearchPreview from './SwitchSearchPreview.vue'
+import Loader from './Loader.vue';
 
 export default {
     name: 'SwitchSearchList',
@@ -15,7 +17,8 @@ export default {
         switches: { type: Array, required: true }
     },
     components: {
-        SwitchSearchPreview
+        SwitchSearchPreview,
+        Loader
     }
 }
 </script>
