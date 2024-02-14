@@ -1,6 +1,6 @@
 .app-header {
     background-color: beige;
-    height: 75px;
+    height: $header-height;
     .logo {
         font-size: 2rem;
         font-weight: bold;
@@ -15,6 +15,10 @@
 
         a:hover {
             color: lightblue;
+        }
+
+        a.router-link-active {
+            text-decoration: underline;
         }
     }
 }

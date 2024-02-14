@@ -7,7 +7,8 @@
                     <li><RouterLink to="/">Resources</RouterLink></li>
                     <li><RouterLink to="/switch/search">Search</RouterLink></li>
                     <li><RouterLink to="/login" 
-                        @click="onLogout">{{ msg() }}</RouterLink></li>
+                        @click="onLogout"
+                        :title="title">{{ msg() }}</RouterLink></li>
                 </ul>
             </nav>
         </div>
@@ -26,7 +27,13 @@ export default {
             this.$emit('logout')
         },
         msg() {
-            return this.user ? `Welcome, ${this.user.fullname}` : 'Login'
+            return this.user ? `Logout` : 'Login'
+        }
+    },
+
+    computed: {
+        title() {
+            if(this.user) return 'Logout'
         }
     }
 }

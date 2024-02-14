@@ -1,0 +1,8 @@
+.switch-search-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 5px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #d9d9d9;
+}

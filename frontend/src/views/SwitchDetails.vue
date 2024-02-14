@@ -1,6 +1,6 @@
 <template>
     <section v-if="currSwitch" class="switch-details">
-        <h1>{{ currSwitch.switch_id }}</h1>
+        <h1 class="title">{{ currSwitch.switch_id }}</h1>
         <PortList :ports="currSwitch.ports" />
     </section>
 </template>

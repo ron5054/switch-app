@@ -1,0 +1,28 @@
+.switch-search {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr;
+    row-gap: 15px;
+    height: calc(100vh - $header-height);
+    padding-block-start: 50px;
+
+    input {
+        width: 50%;
+        justify-self: center;
+        padding: 10px;
+        border-radius: 2rem;
+        font-size: 1.5rem;
+        transition: 0.2s border;
+        border: 2px solid rgb(150, 149, 149);
+
+        &::placeholder {
+            text-align: center;
+        }
+
+        &:focus {
+            outline: none;
+            border: 2px solid black;
+        }
+
+    }
+}
