@@ -5,11 +5,15 @@
 
 // BASICS
 @import 'basics/helpers';
+@import 'basics/layout';
 @import 'basics/base';
 
 // COMPONENTS
-@import 'cmps/PortPreview';
+@import 'cmps/AppHeader';
+
 @import 'cmps/PortList';
-@import 'cmps/SwitchPreview';
-@import 'cmps/SwitchList';
+@import 'cmps/PortPreview';
+
 @import 'cmps/SwitchDetails';
+@import 'cmps/SwitchList';
+@import 'cmps/SwitchPreview';
