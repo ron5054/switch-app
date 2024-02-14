@@ -7,8 +7,7 @@
                     <li><RouterLink to="/">Resources</RouterLink></li>
                     <li><RouterLink to="/switch/search">Search</RouterLink></li>
                     <li><RouterLink to="/login" 
-                        @click="onLogout"
-                        class="nav-group">{{ msg }}</RouterLink></li>
+                        @click="onLogout">{{ msg() }}</RouterLink></li>
                 </ul>
             </nav>
         </div>
@@ -21,16 +20,13 @@ export default {
 
     props: { user: Object },
 
-    data() {
-        return {
-            msg: this.user ? `Welcome, ${this.user.fullname}` : 'Login'
-        }
-    },
-
     methods: {
         onLogout() {
-            if(this.user) return
+            if(!this.user) return
             this.$emit('logout')
+        },
+        msg() {
+            return this.user ? `Welcome, ${this.user.fullname}` : 'Login'
         }
     }
 }

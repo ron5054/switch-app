@@ -1,6 +1,6 @@
 .app-header {
     background-color: beige;
-
+    height: 75px;
     .logo {
         font-size: 2rem;
         font-weight: bold;
@@ -15,10 +15,6 @@
 
         a:hover {
             color: lightblue;
-        }
-
-        .nav-group {
-            margin-inline-start: 2rem
         }
     }
 }
