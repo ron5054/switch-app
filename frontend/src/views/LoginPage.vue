@@ -15,26 +15,28 @@
 <script>
 
 export default {
-  name: 'login-signup',
+  name: 'LoginPage',
+
   data() {
     return {
       loginCred: { username: '', password: '' },
     }
   },
+
   methods: {
     async doLogin() {
-      if (!this.loginCred.username || !this.loginCred.password) return showErrorMsg('Please enter username/password')
+      if (!this.loginCred.username || !this.loginCred.password) {
+        alert('Some credentials are missing')
+        return
+      }
 
       try {
-        await this.$store.dispatch({ type: "login", userCred: this.loginCred })
+        await this.$store.dispatch({ type: 'login', userCred: this.loginCred })
         this.$router.push('/')
       } catch (err) {
         console.log(err.message)
-        showErrorMsg('Wrong username or password')
+        alert('Wrong username or password')
       }
-    },
-    doLogout() {
-      this.$store.dispatch({ type: 'logout' })
     },
   }
 }

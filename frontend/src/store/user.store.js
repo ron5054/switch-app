@@ -3,16 +3,18 @@ import { userService } from '../services/user.service'
 export const userStore = {
     state: {
         loggedinUser: userService.getLoggedinUser(),
-
     },
+
     getters: {
         loggedinUser({ loggedinUser }) { return loggedinUser },
     },
+
     mutations: {
         setLoggedinUser(state, { user }) {
             state.loggedinUser = (user) ? { ...user } : null
         },
     },
+    
     actions: {
         async login({ commit }, { userCred }) {
             try {
