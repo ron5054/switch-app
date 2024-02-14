@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import { userService } from './services/user.service'
 
 import LoginPage from './views/LoginPage.vue'
 import SwitchIndex from './views/SwitchIndex.vue'
@@ -35,3 +36,8 @@ export const router = createRouter({
   // base: process.env.BASE_URL,
 })
 
+router.beforeEach((to, from) => {
+  if(to.path === '/login') return
+  const user = userService.getLoggedinUser()
+  return user ? true : false
+})
