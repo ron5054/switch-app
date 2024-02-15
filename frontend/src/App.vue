@@ -1,12 +1,14 @@
 <template>
     <section class="main-layout">
-        <AppHeader :user="user" @logout="logout"/>
+        <AppHeader :user="user" @logout="logout" />
         <RouterView />
+        <UserMsg />
     </section>
 </template>
 
 <script>
 import AppHeader from './cmps/AppHeader.vue'
+import UserMsg from './cmps/UserMsg.vue'
 
 export default {
     name: 'App',
@@ -45,7 +47,8 @@ export default {
     },
 
     components: {
-        AppHeader
+        AppHeader,
+        UserMsg
     }
 }
 </script>

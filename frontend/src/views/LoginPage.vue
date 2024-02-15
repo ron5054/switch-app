@@ -16,6 +16,7 @@
 
 <script>
 import Loader from '../cmps/Loader.vue'
+import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 export default {
   name: 'LoginPage',
 
@@ -28,17 +29,20 @@ export default {
   methods: {
     async doLogin() {
       if (!this.loginCred.username || !this.loginCred.password) {
-        alert('Some credentials are missing')
+        showErrorMsg('Some credentials are missing')
         return
       }
 
       try {
-        await this.$store.dispatch({ type: 'login', userCred: this.loginCred })
-        await this.$store.dispatch({ type: 'getSwitches', pageIdx: 0, pageSize: 8 })
-        this.$router.push('/')
+        const user = await this.$store.dispatch({ type: 'login', userCred: this.loginCred })
+        if (user) {
+          await this.$store.dispatch({ type: 'getSwitches', pageIdx: 0, pageSize: 8 })
+          this.$router.push('/')
+          showSuccessMsg('Login successful')
+        }
       } catch (err) {
         console.log(err.message)
-        alert('Wrong username or password')
+        showErrorMsg('Wrong username or password')
       }
     },
   },
