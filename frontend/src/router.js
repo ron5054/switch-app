@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { userService } from './services/user.service'
+import { showErrorMsg } from './services/event-bus.service'
 
 import LoginPage from './views/LoginPage.vue'
 import SwitchIndex from './views/SwitchIndex.vue'
@@ -39,5 +40,9 @@ export const router = createRouter({
 router.beforeEach((to, from) => {
   if(to.path === '/login') return
   const user = userService.getLoggedinUser()
-  return user ? true : false
+  if(user) return true
+  else {
+    showErrorMsg('Login to access pages')
+    return false
+  }
 })
